@@ -12,11 +12,9 @@
 git clone <url>
 ```
 
-Clone the project to the local computer.
+**Download the repository to the local computer.**
 
 
-
-**Manage project with github**
 
 In vs code terminal, 
 
@@ -33,3 +31,29 @@ code hello.html
 ```
 
 Then a file called "hello.html" is created successfully.
+
+### git add
+
+```powershell
+git add <filename>
+```
+
+Track the file, so this file and the changes being made will be saved next time.
+
+### git commit
+
+```powershell
+git commit -m "message"
+```
+
+Save the current state of files.
+
+"message": descriptions of changes you've made in the most recent commit files
+
+### git status
+
+Report current repository status.
+
+### git push
+
+Publish your local commits to github.
