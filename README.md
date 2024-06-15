@@ -48,12 +48,24 @@ git commit -m "message"
 
 Save the current state of files.
 
-"message": descriptions of changes you've made in the most recent commit files
+"message": descriptions of changes you've made in the most recent commit files.
+
+If you commit all of the file that have been changed at the same time, use:
+
+```powershell
+git commit -am "message"
+```
+
+
 
 ### git status
 
 Report current repository status.
 
 ### git push
+
+```powershell
+git push
+```
 
 Publish your local commits to github.
