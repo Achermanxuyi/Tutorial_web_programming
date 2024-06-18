@@ -40,6 +40,12 @@ git add <filename>
 
 Track the file, so this file and the changes being made will be saved next time.
 
+```powershell
+git add .
+```
+
+Track all files within the directory.
+
 ### git commit
 
 ```powershell
@@ -56,8 +62,6 @@ If you commit all of the file that have been changed at the same time, use:
 git commit -am "message"
 ```
 
-
-
 ### git status
 
 Report current repository status.
@@ -69,3 +73,12 @@ git push
 ```
 
 Publish your local commits to github.
+
+### git pull
+
+```
+git pull
+```
+
+Sometimes, the remote repository on GitHub will be more up to date than the local version. In this cade, you want to first commit any changes then run `git pull` to pull any remote changes to your local repository.
+
