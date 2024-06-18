@@ -91,3 +91,64 @@ Sometimes, the remote repository on GitHub will be more up to date than the loca
 + One problem that can emerge when working with Git, especially when you're collaborating with other people, is something called a **merge conflict**. A merge conflict occurs when two people attempt to change a file in ways that conflict with each other.
 + This will typically occur when you either `git push` or `git pull`. When this happens, Git automatically change into a format that clearly outlines what the conflict is. 
 
+The IDE will show the changes and their authors, you can choose the version you want or directly change the repository.
+
+### git log
+
+```powershell
+git log
+```
+
+Give a history of all of your commits on that repository.
+
+*To exit: press `Q` key*.
+
+### git reset
+
+Revert back to a previous commit.
+
+```powershell
+git reset --hard <commit>
+git reset --hard origin/master
+```
+
++ commit: revert your code to a exact version with commit hash code (seen in `git log`).
+
++ origin/master: revert your code to the version currently stored online on Github.
+
+### Branching
+
++ Branching is a method of moving into a new direction when creating a new feature, and only combining this new feature with the main part of your code, or the main branch.
+
++ The branch you are currently looking at is determined by the `HEAD`, which points to one of the two branches. Nu default, the HEAD is pointed at the master branch, but we can check out other branches as well.
+
++ How to implement branching in our git repositories:
+
+  + Run `git branch` to see which you are currently working on:
+    ```powershell
+    PS E:\Full Stack\Web Programming with Python and JavaScript\Code\Tutorial_web_programming> git branch
+    * main
+    ```
+
+  + To make a new branch
+
+    ```powershell
+    git checkout -b <branch name>
+    ```
+
+  + Switch between branches.
+
+    ```powershell
+    git checkout <branch name>
+    ```
+
+    And commit any changes to each branch.
+
+  + when we are ready to merge our branches together, we'll check out the branch we wish to keep (almost always the master branch).
+
+    ```powershell
+    git merge <othter branch name>
+    ```
+
+    
+
