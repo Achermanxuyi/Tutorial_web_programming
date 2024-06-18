@@ -6,7 +6,7 @@
 
 ## Git
 
-### git lone
+### git clone
 
 ```
 git clone <url>
@@ -63,6 +63,10 @@ git commit -am "message"
 ```
 
 ### git status
+
+```powershell
+git status
+```
 
 Report current repository status.
 
