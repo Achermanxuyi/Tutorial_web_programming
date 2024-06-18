@@ -91,3 +91,28 @@ Sometimes, the remote repository on GitHub will be more up to date than the loca
 + One problem that can emerge when working with Git, especially when you're collaborating with other people, is something called a **merge conflict**. A merge conflict occurs when two people attempt to change a file in ways that conflict with each other.
 + This will typically occur when you either `git push` or `git pull`. When this happens, Git automatically change into a format that clearly outlines what the conflict is. 
 
+The IDE will show the changes and their authors, you can choose the version you want or directly change the repository.
+
+### git log
+
+```powershell
+git log
+```
+
+Give a history of all of your commits on that repository.
+
+*To exit: press `Q` key*.
+
+### git reset
+
+Revert back to a previous commit.
+
+```powershell
+git reset --hard <commit>
+git reset --hard origin/master
+```
+
+commit: revert your code to a exact version with commit hash code (seen in `git log`).
+
+origin/master: revert your code to the version currently stored online on Github.
+
