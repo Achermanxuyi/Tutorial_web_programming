@@ -150,4 +150,92 @@ git reset --hard origin/master
     git merge <othter branch name>
     ```
 
-    
+
+## Python
+
+```python
+print("Hello, world!")
+```
+
+
+
+### Variables
+
+```python
+a = 38 # integer
+b = 1.5 # float
+c = "Hello!" # str
+d = True # bool
+e = None # NoneType
+```
+
+### Formatting Strings
+
+eg1.
+
+```python
+name = input("Name: ")
+print("Hello, " + name)
+```
+
+eg2.
+
+```python
+print(f"Hello, {input('Name: ')}")
+```
+
+### Conditiions
+
+```python
+num = int(input("Number: "))
+if num > 0:
+    print("Number is positive")
+elif num < 0:
+    print("Number is negative")
+else:
+    print("Number is 0")
+```
+
+### Sequences
+
+One of the most powerful parts of the Python language is its ability to work with **sequences** of data in addition to individual variables.
+
+#### Strings
+
+**Ordered**: Yes
+
+**Mutable**: No
+
+We can think of a string as a sequence of characters, we can access individual elements within the string.
+
+```python
+name = "Harry"
+print(name[0])
+print(name[1])
+```
+
+#### Lists
+
+**Ordered**: Yes
+
+**Mutable**: Yes
+
+A [Python list](https://www.w3schools.com/python/python_lists.asp) allows you to store any variable types. 
+
+```python
+# List
+names = ["Harry", "Ron", "Hermione"]
+# Print the entire list:
+print(names)
+# Print the second element of the list:
+print(names[1])
+# Add a new name to the list:
+names.append("Draco")
+# Sort the list:
+names.sort()
+# Print the new list:
+print(names)
+```
+
+#### 
+
