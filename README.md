@@ -267,7 +267,7 @@ After installing Django, we can go through the steps of creating a new Django pr
 
 *Default landing page:*
 
-![Alt text](https://github.com/Achermanxuyi/Tutorial_web_programming/tree/main/images/django_default)
+![Alt text](https://github.com/Achermanxuyi/Tutorial_web_programming/tree/main/images/django_default.png)
 
 
 
