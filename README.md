@@ -267,4 +267,4 @@ After installing Django, we can go through the steps of creating a new Django pr
 
 *Default landing page:*
 
-![image-20240713160211755](C:\Users\Alan Xu\AppData\Roaming\Typora\typora-user-images\image-20240713160211755.png)
+![django_default](E:\Full Stack\Web Programming with Python and JavaScript\Code\Tutorial_web_programming\django_default.png)
