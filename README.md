@@ -267,7 +267,67 @@ After installing Django, we can go through the steps of creating a new Django pr
 
 *Default landing page:*
 
-![Alt text](images/django_default.png)
+<img src="images/django_default.png" alt="Alt text" style="zoom:67%;" />
 
 
+
+5. **Create applications. ** Django projects are split into one or more **applications**. To create an application, run `python manage.py startapp APP_NAME`. This will create some additional directories and files that will be useful shortly, including `views.py`.
+6. To install the new app, go to `settings.py`, find `INSTALLED_APPS`, and add the name of the new application to this list.
+
+​	<img src="images/installed_app.png" alt="Alt text" style="zoom:50%;" />
+
+
+
+### Routes
+
+**Start applications**
+
+1. Navigate to `views.py`. This file will contain a number of different views, and a view  can be thought as one page the users might like to see. To create a view, we'll write a function that takes in a `request`. The function  index simply returns an `HttpResponse` (A very simple response that includes a response code of 200 and string of text that can be displayed in a web browser) if " Hello world!". In order to do this, relevant modules is imported. 	
+
+```python
+from django.http import HttpResponse
+from django.shortcuts import render
+
+# Create your views here.
+def index(request):
+    return HttpResponse("Hello world!")
+
+```
+
+2. To associate this view we just created with a specific URL. Create another file called `urls.py` in the same directory as `views.py`. For each individual app, it's best to have a separate `urls.py`.
+3. Inside the new `urls.py`,  a new list of url patterns will be created that a user might visit while visit while using the website. In order to do this:
+   1. Import modules: `from django.urls import path`.
+   2. Create a list called `urlpatterns`.
+   3. For each desired URL, add an item to the `urlpatterns` list that contains a call to the `path` function with two or three arguments: A String representing the URL path, a function from `views.py` being called, and a name for that path (optional).
+   
+   ```python
+   from django.urls import path
+   from . import views
+   
+   urlpatterns =[
+       path("", views.index, name="index")
+   ]
+   ```
+   
+   4. Edit the `urls.py` created for the entire project. A path `admin` is already there, we need add another path for the new app, so we'll add an item to the `urlpatterns` list following the same pattern as the earlier paths. To include **all ** of the paths from the `urls.py`, write `include(APP_NAME.urls)`.
+   
+   ```python
+   from django.contrib import admin
+   from django.urls import include, path
+   
+   urlpatterns = [
+       path('admin/', admin.site.urls),
+       path('Hello/', include("Hello.urls"))
+   ]
+   ```
+   
+   5. By doing this, we’ve specified that when a user visits our site, and then in the search bar adds `/hello` to the URL, they’ll be redirected to the paths inside of our new application.
+
+Now, using `python manage.py runserver` and visit the url provided.
+
+![Alt text](images/django_app.png)
+
+The screen is shown above, because I have only defined the URL `localhost:8000/Hello`, but we haven't defined the URL `localhost:8000`. So when adding `/Hello` to the URL in the search bar.
+
+![Alt text](images/django_app1.png)
 
