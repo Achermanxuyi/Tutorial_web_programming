@@ -150,94 +150,9 @@ git reset --hard origin/master
     git merge <othter branch name>
     ```
 
-
 ## Python
 
-```python
-print("Hello, world!")
-```
-
-
-
-### Variables
-
-```python
-a = 38 # integer
-b = 1.5 # float
-c = "Hello!" # str
-d = True # bool
-e = None # NoneType
-```
-
-### Formatting Strings
-
-eg1.
-
-```python
-name = input("Name: ")
-print("Hello, " + name)
-```
-
-eg2.
-
-```python
-print(f"Hello, {input('Name: ')}")
-```
-
-### Conditiions
-
-```python
-num = int(input("Number: "))
-if num > 0:
-    print("Number is positive")
-elif num < 0:
-    print("Number is negative")
-else:
-    print("Number is 0")
-```
-
-### Sequences
-
-One of the most powerful parts of the Python language is its ability to work with **sequences** of data in addition to individual variables.
-
-#### Strings
-
-**Ordered**: Yes
-
-**Mutable**: No
-
-We can think of a string as a sequence of characters, we can access individual elements within the string.
-
-```python
-name = "Harry"
-print(name[0])
-print(name[1])
-```
-
-#### Lists
-
-**Ordered**: Yes
-
-**Mutable**: Yes
-
-A [Python list](https://www.w3schools.com/python/python_lists.asp) allows you to store any variable types. 
-
-```python
-# List
-names = ["Harry", "Ron", "Hermione"]
-# Print the entire list:
-print(names)
-# Print the second element of the list:
-print(names[1])
-# Add a new name to the list:
-names.append("Draco")
-# Sort the list:
-names.sort()
-# Print the new list:
-print(names)
-```
-
-
+Go other Python tutorials.
 
 ## Django
 
@@ -264,6 +179,10 @@ After installing Django, we can go through the steps of creating a new Django pr
    + `settings.py` contains some important configuration settings for our new project. There are some default settings, but we may wish to change some of them from time to time.
    + `urls.py` contains directions for where users should be routed after navigating to a certain URL.
 4. Start the project by running `python manage.py runserver`.  This will open a development server, which you can access by visiting URL provided. This development server is being run locally on your machine, meaning other people cannot access your website.
+
+```powershell
+python manage.py runserver
+```
 
 *Default landing page:*
 
@@ -330,4 +249,93 @@ Now, using `python manage.py runserver` and visit the url provided.
 The screen is shown above, because I have only defined the URL `localhost:8000/Hello`, but we haven't defined the URL `localhost:8000`. So when adding `/Hello` to the URL in the search bar.
 
 ![Alt text](images/django_app1.png)
+
+The process got us to that page above.
+
+1. When we access URL `localhost:8000/Hello/`, Django looked at what came after the base URL (`localhost:8000/`) and went to the project's `urls.py` file and searched for a pattern that matched `Hello`.
+2. It found that extension because it is defined, and saw that when met that extension, it should `include` the `urls.py` file from within the new application.
+
+```python
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('Hello/', include("Hello.urls"))
+]
+```
+
+3. Then Django ignored the parts of the URL it has already used in rerouting (`localhost:8000/Hello/`, or all of it) and looked inside other `urls.py` file for a pattern that matches he remaining part of the URL.
+4. It found that the only path so far (`""`) matched what was left of the URL, and so it directed us to the function from `views.py` associated with that path.
+5. Finally, Django ran that function within `views.py`, and return the result (`HttpResponse("Hello world!")`) to the web browser.
+
+
+
+**Add more than one view to the application.** We can follow many of the same steps within the application to create pages that say hello to Iris and Kaori.
+
+Inside `views.py`
+
+```python
+from django.http import HttpResponse
+from django.shortcuts import render
+
+# Create your views here.
+def index(request):
+    return HttpResponse("Hello world!")
+
+def Iris(request):
+    return HttpResponse("Hello Iris!")
+
+def Kaori(request):
+    return HttpResponse("Hello Kaori!")
+```
+
+Inside `urls.py` (within the application)
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns =[
+    path("", views.index, name="index"),
+    path("Iris", views.Iris, name="Iris"),
+    path("Kaori", views.Kaori, name="Kaori")
+]
+```
+
+Now, our page remained unchanged when we visit `localhost:8000/Hello`, but we get different pages when we add `Iris` or `Kaori` to the URL:
+
+![Alt text](images/app_hello_1.png)
+
+![Alt text](images/app_hello_2.png)
+
+Many sites are parameterized by items included in the URL. For example, you can find your own public Github repositories by navigating to `www.github.com.YOUR_USERNAME`.
+
+A general 'greet' function, in`views.py`:
+
+```python
+def greet(request, name):
+    return HttpResponse(f"Hello, {name}!")
+```
+
+This function takes in not only a request, but also additional argument of a user's name, and then returns a custom HTTP Response based on that name. Next, create a flexible path in `urls.py`
+
+```python
+path("<str:name>", views.greet, name="greet")
+```
+
+![Alt text](images/hello_3.png)
+
+![Alt text](images/hello_4.png)
+
+This is a great illustration of how any functionality we have in Python can be used in Django before being returned.
+
+### Templates
+
+So far, our HTTP Responses, have been only text, but we can include any HTML elements we want to! For example, I could decide to return a blue header instead of just the text in our `index` function:
+
+```python
+```
+
+
 

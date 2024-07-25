@@ -3,4 +3,13 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello world!")
+    return render(request, "Hello/index.html")
+
+def Iris(request):
+    return HttpResponse("Hello Iris!")
+
+def Kaori(request):
+    return HttpResponse("Hello Kaori!")
+
+def greet(request, name):
+    return HttpResponse(f"Hello, {name}!")
