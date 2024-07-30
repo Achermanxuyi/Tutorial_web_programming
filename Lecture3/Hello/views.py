@@ -12,4 +12,6 @@ def Kaori(request):
     return HttpResponse("Hello Kaori!")
 
 def greet(request, name):
-    return HttpResponse(f"Hello, {name}!")
+    return render(request, "Hello/greet.html", {
+        "name": name.capitalize()
+    })

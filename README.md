@@ -335,7 +335,41 @@ This is a great illustration of how any functionality we have in Python can be u
 So far, our HTTP Responses, have been only text, but we can include any HTML elements we want to! For example, I could decide to return a blue header instead of just the text in our `index` function:
 
 ```python
+def index(request):
+    return HttpResponse("<h1 style=\"color:blue\">Hello, world!</h1>")
 ```
 
 
 
+![Alt text](images\hello_5.png)
+
+It will get very tedious to write an entire HTML page within `views.py`. It would also constitute bad design, as we want to keep separate parts of the project in separate files.
+
+[Django's templates](https://docs.djangoproject.com/en/4.0/topics/templates/) can keep separate parts of the project in separate files, which will allow us to write HTML and CSS in separate files and render those files using Django. The syntax we'll use for rendering a template looks like this:
+
+```python
+def index(request):
+    return render(request, "Hello/index.html")
+```
+
+Create the template: create a folder called `templates` inside the app folder, then create a folder called `Hello` (or what ever the app's name is) within that, and then add a file called `index.html`.
+
+![Alt text](images\templates_1.png)
+
+Next, add content to the `index.html` file
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello</title>
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+  </body>
+</html>
+
+```
+
+Search the URL in web browser:
+![Alt text](images/templates_2.png)
