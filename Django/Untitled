@@ -1,0 +1,5 @@
+print("Hello Wolrd!")
+
+print("This is a test python program for break point/ debugger function in nvim.")
+
+print("Test Done!")
